@@ -1,0 +1,11 @@
+.holder {
+    display: flex;
+    gap: 30px;
+}
+
+.box {
+    border: 1px solid #000;
+    border-radius: 15px;
+    padding: 15px;
+    width: 50%;
+}
