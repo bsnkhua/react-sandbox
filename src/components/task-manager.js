@@ -198,8 +198,8 @@ const TaskManager = () => {
                 </Modal>
             }
             <h2>Task Manager</h2>
-            <div className={styles.holder}>
-                <div className={styles.box}>
+            <div className='holder'>
+                <div className='box'>
                     <h3>Add task:</h3>
                     <div className={styles.row}>
                         <label htmlFor="taskName">Task name:</label>
@@ -211,7 +211,7 @@ const TaskManager = () => {
                     </div>
                     <button onClick={addTaskHandler}>Add task</button>
                 </div>
-                <div className={styles.box}>
+                <div className='box'>
                     {tasksList.length > 0 &&
                         <div className={styles['title-table']}>
                             <strong>Task name</strong>

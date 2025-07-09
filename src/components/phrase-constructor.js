@@ -1,6 +1,5 @@
 import { useState } from "react";
 import Wrapper from "../UI/wrapper";
-import styles from './phrase-constructor.module.css'
 
 const PhraseConstructor = () => {
     const array01 = ['Жизнь — это', 'Успех приходит к тому, кто', 'Настоящая сила в том, что'];
@@ -20,7 +19,7 @@ const PhraseConstructor = () => {
             <h2>Phrase Constructor</h2>
             <button onClick={createPhraseHandler}>Create phrase</button>
             {finalPhrase && 
-            <div className={styles.holder}>
+            <div className='holder'>
                 {finalPhrase}
             </div>}
         </Wrapper>

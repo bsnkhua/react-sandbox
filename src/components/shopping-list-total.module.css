@@ -2,11 +2,6 @@
     margin-bottom: 30px;
 }
 
-.holder {
-    display: flex;
-    gap: 30px;
-}
-
 .add-row:last-of-type {
     margin-bottom: 0;
 }
@@ -14,13 +9,6 @@
 .add-row label {
     display: block;
     margin-bottom: 10px;
-}
-
-.box {
-    border: 1px solid #000;
-    padding: 20px;
-    border-radius: 15px;
-    width: 50%;
 }
 
 .title {

@@ -61,8 +61,8 @@ const ShoppingListTotal = () => {
         <Wrapper>
             <h2>Shopping List Total</h2>
             {showModal && <Modal onCloseHandler={onCloseHandler} text={'Бюджет превышен!!!'} />}
-            <div className={styles.holder}>
-                <div className={styles['box']}>
+            <div className='holder'>
+                <div className='box'>
                     <div className={styles['add-row']}>
                         <label htmlFor="name">Name product</label>
                         <input value={nameProduct} type="text" id="name" onChange={nameHandler}/>
@@ -75,7 +75,7 @@ const ShoppingListTotal = () => {
                         <button onClick={addProductHandler}>Add product</button>
                     </div>
                 </div>
-                <div className={styles['box']}>
+                <div className='box'>
                     <div className={styles.title}>
                         <span>Product name</span>
                         <span>Price</span>

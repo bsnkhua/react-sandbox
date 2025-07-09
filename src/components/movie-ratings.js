@@ -136,8 +136,8 @@ const MovieRatings = () => {
                 </div>
             </Modal>}
             <h2>Movie ratings</h2>
-            <div className={styles.holder}>
-                <div className={styles.box}>
+            <div className='holder'>
+                <div className='box'>
                     <div className={styles['add-row']}>
                         <label htmlFor="name">Film name</label>
                         <input ref={inpuRef} value={name} id="name" type="text" onChange={onChangeNameHandler} />
@@ -148,7 +148,7 @@ const MovieRatings = () => {
                     </div>
                     <button onClick={addFilmHandler}>Add Film</button>
                 </div>
-                <div className={styles.box}>
+                <div className='box'>
                     <ul className={styles.list}>
                         {filmsList.map((item, index) => (
                             <li key={index}>

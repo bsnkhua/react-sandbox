@@ -28,7 +28,7 @@ const ListMoviesFiltered = () => {
     return (
         <Wrapper>
             <h2>List movies filtered</h2>
-            <div className={styles.holder}>
+            <div className='holder'>
                 <span>Filter by:</span>
                 <ul className={styles['button-list']}>
                     {genres.map((item, index) => (

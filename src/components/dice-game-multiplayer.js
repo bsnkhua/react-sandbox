@@ -72,8 +72,8 @@ const DiceGameMultiplayer = () => {
         <Wrapper>
             {showModal && <Modal onCloseHandler={onCloseHandler} text={currentPlayer === false ? `${'Win player 01'}` : `${'Win player 02'}`}/>}
             <h2>Dice Game Multiplayer</h2>
-            <div className={styles.holder}>
-                <div className={currentPlayer === false ? `${styles.box} ${styles.disabled}` : `${styles.box}`}>
+            <div className='holder'>
+                <div className={currentPlayer === false ? `box ${styles.disabled}` : `box`}>
                     <h3>Player 1</h3>
                     <div className={styles.row}>
                         История бросков: {historyArray01.join(' - ')}
@@ -82,7 +82,7 @@ const DiceGameMultiplayer = () => {
                         Total: {totalDice01}
                     </div>
                 </div>
-                <div className={currentPlayer === true ? `${styles.box} ${styles.disabled}` : `${styles.box}`}>
+                <div className={currentPlayer === true ? `box ${styles.disabled}` : 'box'}>
                     <h3>Player 2</h3>
                     <div className={styles.row}>
                         История бросков: {historyArray02.join(' - ')}

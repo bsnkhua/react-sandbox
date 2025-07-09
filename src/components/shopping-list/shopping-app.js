@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import Wrapper from "../../UI/wrapper";
 import ShoppingForm from "./shopping-form";
 import ShoppingListItems from "./shopping-list-items";
-import styles from './shopping-app.module.css'
 
 const ShoppingApp = () => {
     const [productList, setProductList] = useState([]);
@@ -22,11 +21,11 @@ const ShoppingApp = () => {
     return (
         <Wrapper>
             <h2>Shopping App</h2>
-            <div className={styles.holder}>
-                <div className={styles.box}>
+            <div className='holder'>
+                <div className='box'>
                     <ShoppingForm onAddProduct={addProductHandler}/>
                 </div>
-                <div className={styles.box}>
+                <div className='box'>
                     <ShoppingListItems items={productList} onBought={boughtHandler}/>
                 </div>
             </div>
