@@ -1,0 +1,68 @@
+.holder {
+    display: flex;
+    gap: 30px;
+}
+
+.box {
+    padding: 20px;
+    border: 1px solid #000;
+    border-radius: 15px;
+    width: 50%;
+}
+
+.add-row {
+    margin-bottom: 20px;
+}
+
+.add-row label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.list {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.list li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid #000;
+}
+
+.list li div {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.filter-holder {
+    display: flex;
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.search {
+    display: flex;
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.modal-inner-holder {
+    margin-top: 30px;
+}
+
+.sub-row {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.modal-inner-holder button {
+    background-color: #fff;
+    color: #000;
+}

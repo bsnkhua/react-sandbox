@@ -1,0 +1,16 @@
+.box {
+    padding: 20px;
+    border: 1px solid #000;
+}
+
+.dark {
+    background-color: #000;
+    color: #fff;
+}
+
+.light {
+    background-color: #fff;
+    color: #000;
+}
+
+

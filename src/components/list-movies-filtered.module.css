@@ -1,0 +1,32 @@
+.list {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    border-top: 1px solid #000;
+}
+
+.list li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #000;
+    padding: 10px 0;
+}
+
+.holder {
+    display: flex;
+    align-items: center;
+    margin: 0 0 50px;
+}
+
+.button-list {
+    display: flex;
+    padding: 0;
+    margin: 0 0 0 30px;
+    list-style: none;
+    gap: 20px;
+}
+
+.list li button {
+    margin-left: 30px;
+}
