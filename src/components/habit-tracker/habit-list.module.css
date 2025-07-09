@@ -1,0 +1,46 @@
+.list {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.list li {
+    border-bottom: 1px solid #000;
+    padding: 10px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.list li .name {
+    width: 150px;
+    display: block;
+}
+
+.counter {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.inner {
+    display: flex;
+    align-items: center;
+}
+
+.info {
+    display: flex;
+    flex: 1 0 0;
+    justify-content: space-between;
+    margin-right: 100px;
+    align-items: center;
+}
+
+.done .name {
+    text-decoration: line-through;
+}
+
+.done .counter button {
+    pointer-events: none;
+    opacity: 0.25;
+}

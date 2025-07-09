@@ -19,11 +19,13 @@ import UniqueNumbersTracker from './components/unique-numbers-tracker';
 import MovieRatings from './components/movie-ratings';
 import TaskManager from './components/task-manager';
 import ShoppingApp from './components/shopping-list/shopping-app';
+import HabitApp from './components/habit-tracker/habit-app';
 
 function App() {
 
   return (
     <div className="App">
+      <HabitApp />
       <ShoppingApp />
       <TaskManager />
       <MovieRatings />
