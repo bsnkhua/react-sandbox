@@ -1,0 +1,52 @@
+.list {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.list li {
+    padding: 10px 0;
+    border-bottom: 1px solid #000;
+    display: flex;
+    align-items: center;
+}
+
+.title-row {
+    display: flex;
+    border-bottom: 1px solid #000;
+    padding: 10px 0;
+}
+
+.title {
+    width: 26%;
+    position: relative;
+}
+
+.author {
+    width: 26%;
+    position: relative;
+}
+
+.pages {
+    width: 20%;
+    position: relative;
+}
+
+.actions {
+    width: 28%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 20px;
+}
+
+.total {
+    margin-top: 20px;
+}
+
+.read .title,
+.read .pages,
+.read .author {
+   opacity: 0.15;
+   text-decoration: line-through;
+}

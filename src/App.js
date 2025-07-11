@@ -20,11 +20,13 @@ import MovieRatings from './components/movie-ratings';
 import TaskManager from './components/task-manager';
 import ShoppingApp from './components/shopping-list/shopping-app';
 import HabitApp from './components/habit-tracker/habit-app';
+import BookApp from './components/book-tracker-app/book-app';
 
 function App() {
 
   return (
     <div className="App">
+      <BookApp />
       <HabitApp />
       <ShoppingApp />
       <TaskManager />
