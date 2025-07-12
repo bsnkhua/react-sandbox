@@ -31,7 +31,7 @@ const BookList = (props) => {
                         </div>
                         <div className={styles.actions}>
                             <label htmlFor={index}>Read:</label>
-                            <input id={index} type="checkbox" onClick={() => props.onClickRead(index)}/>
+                            <input type="checkbox" checked={item.read} onChange={() => props.onClickRead(item.title, item.author)} />
                             <button onClick={() => props.onDelete(index)}>Delete</button>
                         </div>
                     </li>

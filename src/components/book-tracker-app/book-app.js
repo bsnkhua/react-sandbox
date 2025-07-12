@@ -35,16 +35,15 @@ const BookApp = () => {
         setBookList(updatedBookList);
     }
 
-    const readHandler = (index) => {
-        const upBookList = [...bookList];
-
-        upBookList[index] = {
-            ...upBookList[index],
-            read: !upBookList[index].read
-        }
-
+    const readHandler = (title, author) => {
+        const upBookList = bookList.map((book) =>
+            book.title === title && book.author === author
+            ? { ...book, read: !book.read }
+            : book
+        );
+        
         setBookList(upBookList);
-    }
+    };
 
     const onCloseHandler = () => {
         setShowModal(false);
