@@ -27,8 +27,8 @@ function App() {
 
   return (
     <div className="App">
-      <NoteSaverApp />
       <BookApp />
+      <NoteSaverApp />
       <HabitApp />
       <ShoppingApp />
       <TaskManager />

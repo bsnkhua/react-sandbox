@@ -36,6 +36,14 @@ input {
   width: 50%;
 }
 
+.box:nth-child(1) {
+  width: 40%;
+}
+
+.box:nth-child(2) {
+  width: 60%;
+}
+
 .form-row {
   margin-bottom: 20px;
 }
