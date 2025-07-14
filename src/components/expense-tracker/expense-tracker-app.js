@@ -177,8 +177,6 @@ const ExpenseTrackerApp = () => {
         }
 
     }, [expenseList]);
-
-    console.log(filteredList);
     
     return (
         <Wrapper>
