@@ -127,8 +127,6 @@ const BookApp = () => {
         setShowEditModal(false);
     }
 
-    console.log(bookList);
-
     return (
         <Wrapper>
             <h2>Book tracker app</h2>

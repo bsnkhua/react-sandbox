@@ -22,11 +22,13 @@ import ShoppingApp from './components/shopping-list/shopping-app';
 import HabitApp from './components/habit-tracker/habit-app';
 import BookApp from './components/book-tracker-app/book-app';
 import NoteSaverApp from './components/simple-note-saver/note-saver-app';
+import ExpenseTrackerApp from './components/expense-tracker/expense-tracker-app';
 
 function App() {
 
   return (
     <div className="App">
+      <ExpenseTrackerApp />
       <BookApp />
       <NoteSaverApp />
       <HabitApp />

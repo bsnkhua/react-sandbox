@@ -52,3 +52,7 @@ input {
   display: block;
   margin-bottom: 10px;
 }
+
+.form-row.error input {
+  border-color: red;
+}
