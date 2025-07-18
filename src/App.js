@@ -23,7 +23,7 @@ import HabitApp from './components/habit-tracker/habit-app';
 import BookApp from './components/book-tracker-app/book-app';
 import NoteSaverApp from './components/simple-note-saver/note-saver-app';
 import ExpenseTrackerApp from './components/expense-tracker/expense-tracker-app';
-import QuizApp from './components/expense-tracker/quiz-app/quiz-app';
+import QuizApp from './components/quiz-app/quiz-app';
 
 function App() {
 
