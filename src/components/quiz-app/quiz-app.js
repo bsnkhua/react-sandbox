@@ -32,11 +32,17 @@ const QuizApp = () => {
         }
     ];
 
-    const [showQuiz, setShowQuiz] = useState(false);
+    const [showQuiz, setShowQuiz] = useState(() => {
+        const stored = localStorage.getItem('storedShowQuiz');
+        return stored !== null ? JSON.parse(stored) : false;
+    });
 
     const [quizList, setQuizList] = useState(questions);
 
-    const [currentIndex, setCurrentIndex] = useState(0);
+    const [currentIndex, setCurrentIndex] = useState(() => {
+        const stored = localStorage.getItem('storedCurrentIndex');
+        return stored !== null ? JSON.parse(stored) : 0;
+    });
 
     const [selectedIndex, setSelectedIndex] = useState(null);
 
@@ -52,7 +58,10 @@ const QuizApp = () => {
 
     const [showModal, setShowModal] = useState(false);
 
-    const [progress, setProgress] = useState(0);
+    const [progress, setProgress] = useState(() => {
+        const stored = localStorage.getItem('storedProgress');
+        return stored !== null ? JSON.parse(stored) : 0;
+    });
 
     const startHandler = () => {
         setShowQuiz(true);
@@ -112,6 +121,18 @@ const QuizApp = () => {
         resetHandler();
     }
 
+    useEffect(() => {
+        localStorage.setItem('storedShowQuiz', JSON.stringify(showQuiz));
+    }, [showQuiz]);
+
+    useEffect(() => {
+        localStorage.setItem('storedCurrentIndex', JSON.stringify(currentIndex));
+    }, [currentIndex]);
+
+    useEffect(() => {
+        localStorage.setItem('storedProgress', JSON.stringify(progress));
+    }, [progress]);
+
     return (
         <Wrapper>
             {showModal &&
@@ -120,7 +141,7 @@ const QuizApp = () => {
                 </Modal>
             }
             <h2>Quiz App</h2>
-            {showQuiz === false ? <button onClick={startHandler}>Start</button> : null}
+            {showQuiz !== true ? <button onClick={startHandler}>Start</button> : null}
             {showQuiz && <button onClick={resetHandler}>Reset</button>}
             {showQuiz &&
                 <div className={styles['quiz-holder']}>
