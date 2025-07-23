@@ -1,0 +1,34 @@
+.holder {
+  display: flex;
+  justify-content: space-between;
+  gap: 50px;
+}
+
+.cards-holder {
+  display: flex;
+  gap: 50px;
+  width: 700px;
+  min-width: 700px;
+  max-width: 700px;
+}
+
+.title {
+  margin-bottom: 75px;
+}
+
+.actions {
+  text-align: center;
+  width: 100%;
+}
+
+.active {
+  transform: scale(1.05);
+  opacity: 1 !important;
+}
+
+.btn-holder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}

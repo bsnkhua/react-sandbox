@@ -25,11 +25,13 @@ import NoteSaverApp from './components/simple-note-saver/note-saver-app';
 import ExpenseTrackerApp from './components/expense-tracker/expense-tracker-app';
 import QuizApp from './components/quiz-app/quiz-app';
 import ImageGalleryApp from './components/image-gallery/image-gallery-app';
+import RpgApp from './components/rpg-app/rpg-app';
 
 function App() {
 
   return (
     <div className="App">
+      <RpgApp />
       <ImageGalleryApp />
       <QuizApp />
       <ExpenseTrackerApp />

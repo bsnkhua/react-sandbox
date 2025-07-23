@@ -1,0 +1,79 @@
+.card {
+  width: 50%;
+  border-radius: 20px;
+  border: 5px solid #c58f49;
+  background-color: #201f1d;
+  color: #d5d2b3;
+  padding: 15px;
+  opacity: 0.75;
+  transition: all 0.3s ease-in-out;
+}
+
+.card h2 {
+  margin: 0;
+  text-align: center;
+  padding: 15px;
+}
+
+.image {
+  border: 3px solid #c58f49;
+  border-radius: 15px;
+  margin-bottom: 20px;
+  height: 245px;
+  overflow: hidden;
+}
+
+.image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.stats {
+  border: 3px solid #c58f49;
+  border-radius: 15px;
+  padding: 15px;
+}
+
+.stroke {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.stroke:last-of-type {
+  margin-bottom: 0;
+}
+
+.progress {
+  width: 70%;
+  height: 26px;
+  background-color: #fff;
+  border: 2px solid #c58f49;
+  border-radius: 5px;
+}
+
+.stroke span {
+  font-weight: bold;
+}
+
+.progress div {
+  height: 100%;
+  transition: all 0.3s;
+}
+
+.line {
+  height: 1px;
+  background-color: #c58f49;
+  margin-bottom: 15px;
+}
+
+.hp {
+  background-color: #a0291b;
+}
+
+.mana {
+  background-color: #1f435c;
+}

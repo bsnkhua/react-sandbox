@@ -1,0 +1,36 @@
+.log-holder {
+  border: 2px solid #c58f49;
+  background-color: #201f1d;
+  color: #d5d2b3;
+  padding: 15px;
+  border-radius: 15px;
+  margin-top: 30px;
+}
+
+.list {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  text-align: left;
+}
+
+.list li {
+  border-bottom: 1px solid #d5d2b3;
+  padding: 10px 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.list li:nth-child(2n) {
+  border-bottom-width: 5px;
+  margin-bottom: 20px;
+}
+
+.list li strong {
+  margin-bottom: 10px;
+}
+
+.list li span {
+  color: red;
+  margin-left: 10px;
+}
