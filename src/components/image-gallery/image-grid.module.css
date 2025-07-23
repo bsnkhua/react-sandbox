@@ -1,0 +1,46 @@
+.list {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.list li {
+    width: calc(33.333% - 20px);
+    border: 1px solid #000;
+    border-radius: 15px;
+    padding: 15px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+}
+
+.list img {
+    width: 100%;
+}
+
+.name {
+    display: block;
+    text-align: center;
+    border-top: 1px solid #000;
+    padding-top: 10px;
+    margin-top: 20px;
+}
+
+.list button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-radius: 0 15px 0 0;
+}
+
+.filter {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 30px;
+}
