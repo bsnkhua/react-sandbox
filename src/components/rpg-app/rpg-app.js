@@ -3,15 +3,26 @@ import CharacterCard from "./character-card";
 import styles from "./rpg-app.module.css";
 import playerImage from "./player.png";
 import enemyImage from "./enemy.png";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import BattleLog from "./battle-log";
+import Modal from "../modal";
 
 const RpgApp = () => {
+  const [showModal, setShowModal] = useState(false);
+
+  const [winner, setWinner] = useState(null);
+
+  const [isDefend, setIsDefend] = useState(false);
+
   const [nextButton, setNextButton] = useState(false);
 
   const [log, setLog] = useState([]);
 
   const [damage, setDamage] = useState(0);
+
+  const [mana, setMana] = useState(0);
+
+  const [heal, setHeal] = useState(0);
 
   const getRandomInt = (min, max) =>
     Math.floor(Math.random() * (max - min + 1)) + min;
@@ -44,12 +55,17 @@ const RpgApp = () => {
   };
 
   const attackHandler = () => {
-    const attackAmount = getRandomInt(10, 20);
+    let attackAmount = getRandomInt(10, 20);
+
+    if (isDefend) {
+      attackAmount = attackAmount / 2;
+    }
+
     setDamage(attackAmount);
 
     setEnemy((prev) => ({
       ...prev,
-      hp: enemy.hp - attackAmount,
+      hp: Math.max(prev.hp - attackAmount, 0),
     }));
 
     const newLog = {
@@ -65,13 +81,113 @@ const RpgApp = () => {
     setNextButton(true);
   };
 
+  const skillAttackHandler = () => {
+    let attackAmount = getRandomInt(25, 30);
+
+    if (isDefend) {
+      attackAmount = attackAmount / 2;
+    }
+
+    setDamage(attackAmount);
+
+    setEnemy((prev) => ({
+      ...prev,
+      hp: Math.max(prev.hp - attackAmount, 0),
+    }));
+
+    const manaAmount = 30;
+    setMana(manaAmount);
+
+    setPlayer((prev) => ({
+      ...prev,
+      mana: Math.max(prev.mana - manaAmount, 0),
+    }));
+
+    const newLog = {
+      player: "PLAYER",
+      text: "Skill Damage:",
+      damage: attackAmount,
+    };
+
+    setLog([...log, newLog]);
+
+    setActivePlayer((prev) => !prev);
+
+    setNextButton(true);
+  };
+
+  const healHandler = () => {
+    const healAmount = 20;
+    setHeal(healAmount);
+
+    const manaAmount = 20;
+    setMana(manaAmount);
+
+    setPlayer((prev) => ({
+      ...prev,
+      mana: Math.max(prev.mana - manaAmount, 0),
+    }));
+
+    setPlayer((prev) => ({
+      ...prev,
+      hp: player.hp + healAmount,
+    }));
+
+    const newLog = {
+      player: "PLAYER",
+      text: "Heal:",
+      damage: healAmount,
+    };
+
+    setLog([...log, newLog]);
+
+    setActivePlayer((prev) => !prev);
+
+    setNextButton(true);
+  };
+
+  const defendHandler = () => {
+    setIsDefend(true);
+
+    const newLog = {
+      player: "PLAYER",
+      text: "Defend:",
+      damage: "(Next Enemy damage)/2",
+    };
+
+    setLog([...log, newLog]);
+
+    setActivePlayer((prev) => !prev);
+
+    setNextButton(true);
+  };
+
+  // Enemy
+  const opponentsHandler = () => {
+    const functions = [
+      enemyAttackHandler,
+      enemySkillAttackHandler,
+      enemyHealHandler,
+      enemyDefendHandler,
+    ];
+
+    const randomIndex = Math.floor(Math.random() * functions.length);
+
+    functions[randomIndex]();
+  };
+
   const enemyAttackHandler = () => {
-    const attackAmount = getRandomInt(10, 20);
+    let attackAmount = getRandomInt(10, 20);
+
+    if (isDefend) {
+      attackAmount = attackAmount / 2;
+    }
+
     setDamage(attackAmount);
 
     setPlayer((prev) => ({
       ...prev,
-      hp: enemy.hp - attackAmount,
+      hp: player.hp - attackAmount,
     }));
 
     const newLog = {
@@ -85,10 +201,129 @@ const RpgApp = () => {
     setActivePlayer((prev) => !prev);
 
     setNextButton(false);
+
+    setIsDefend(false);
   };
+
+  const enemySkillAttackHandler = () => {
+    let attackAmount = getRandomInt(25, 30);
+
+    if (isDefend) {
+      attackAmount = attackAmount / 2;
+    }
+
+    setDamage(attackAmount);
+
+    setPlayer((prev) => ({
+      ...prev,
+      hp: Math.max(prev.hp - attackAmount, 0),
+    }));
+
+    const manaAmount = 30;
+    setMana(manaAmount);
+
+    setPlayer((prev) => ({
+      ...prev,
+      mana: Math.max(prev.mana - manaAmount, 0),
+    }));
+
+    const newLog = {
+      player: "ENEMY",
+      text: "Skill Damage:",
+      damage: attackAmount,
+    };
+
+    setLog([...log, newLog]);
+
+    setActivePlayer((prev) => !prev);
+
+    setNextButton(false);
+
+    setIsDefend(false);
+  };
+
+  const enemyHealHandler = () => {
+    const healAmount = 20;
+    setHeal(healAmount);
+
+    const manaAmount = 20;
+    setMana(manaAmount);
+
+    setEnemy((prev) => ({
+      ...prev,
+      mana: Math.max(prev.mana - manaAmount, 0),
+    }));
+
+    setEnemy((prev) => ({
+      ...prev,
+      hp: enemy.hp + healAmount,
+    }));
+
+    const newLog = {
+      player: "ENEMY",
+      text: "Heal:",
+      damage: healAmount,
+    };
+
+    setLog([...log, newLog]);
+
+    setActivePlayer((prev) => !prev);
+
+    setNextButton(false);
+
+    setIsDefend(false);
+  };
+
+  const enemyDefendHandler = () => {
+    setIsDefend(true);
+
+    const newLog = {
+      player: "ENEMY",
+      text: "Defend:",
+      damage: "(Next Player damage)/2",
+    };
+
+    setLog([...log, newLog]);
+
+    setActivePlayer((prev) => !prev);
+
+    setNextButton(false);
+  };
+
+  // Enemy
+
+  const resetHandler = () => {
+    player.hp = 100;
+    player.mana = 100;
+    enemy.hp = 100;
+    enemy.mana = 100;
+    setActivePlayer(null);
+    setNextButton(false);
+    setLog([]);
+  };
+
+  const onCloseHandler = () => {
+    setShowModal(false);
+    resetHandler();
+  };
+
+  useEffect(() => {
+    if (enemy.hp <= 0) {
+      setWinner("Player WIN!!!");
+      setShowModal(true);
+    }
+  }, [enemy.hp]);
+
+  useEffect(() => {
+    if (player.hp <= 0) {
+      setWinner("Enemy WIN!!!");
+      setShowModal(true);
+    }
+  }, [player.hp]);
 
   return (
     <Wrapper>
+      {showModal && <Modal text={winner} onCloseHandler={onCloseHandler} />}
       <h2 className={styles.title}>Mini-RPG Battle App</h2>
       <div className={styles.holder}>
         <div className={styles["cards-holder"]}>
@@ -118,13 +353,25 @@ const RpgApp = () => {
           {activePlayer && (
             <div className={styles["btn-holder"]}>
               <button onClick={attackHandler}>Attack</button>
-              <button>Skill attack</button>
-              <button>Defend</button>
-              <button>Heal</button>
+              {player.mana >= 30 ? (
+                <button onClick={skillAttackHandler}>Skill attack</button>
+              ) : (
+                <button disabled onClick={skillAttackHandler}>
+                  Skill attack
+                </button>
+              )}
+              <button onClick={defendHandler}>Defend</button>
+              {player.mana >= 20 ? (
+                <button onClick={healHandler}>Heal</button>
+              ) : (
+                <button disabled onClick={healHandler}>
+                  Heal
+                </button>
+              )}
             </div>
           )}
           {nextButton && (
-            <button onClick={enemyAttackHandler}>Enemy attacks!</button>
+            <button onClick={opponentsHandler}>Opponent's move!</button>
           )}
           <BattleLog log={log} />
         </div>
