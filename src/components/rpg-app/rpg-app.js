@@ -45,7 +45,7 @@ const RpgApp = () => {
       image: playerImage,
     },
     {
-      name: "Emeny",
+      name: "Enemy",
       image: enemyImage,
     },
   ];
@@ -74,11 +74,13 @@ const RpgApp = () => {
       damage: attackAmount,
     };
 
-    setLog([...log, newLog]);
+    setLog((prev) => [...prev, newLog]);
 
     setActivePlayer((prev) => !prev);
 
     setNextButton(true);
+
+    setIsDefend(false);
   };
 
   const skillAttackHandler = () => {
@@ -109,11 +111,13 @@ const RpgApp = () => {
       damage: attackAmount,
     };
 
-    setLog([...log, newLog]);
+    setLog((prev) => [...prev, newLog]);
 
     setActivePlayer((prev) => !prev);
 
     setNextButton(true);
+
+    setIsDefend(false);
   };
 
   const healHandler = () => {
@@ -130,7 +134,7 @@ const RpgApp = () => {
 
     setPlayer((prev) => ({
       ...prev,
-      hp: player.hp + healAmount,
+      hp: prev.hp + healAmount,
     }));
 
     const newLog = {
@@ -139,11 +143,13 @@ const RpgApp = () => {
       damage: healAmount,
     };
 
-    setLog([...log, newLog]);
+    setLog((prev) => [...prev, newLog]);
 
     setActivePlayer((prev) => !prev);
 
     setNextButton(true);
+
+    setIsDefend(false);
   };
 
   const defendHandler = () => {
@@ -155,7 +161,7 @@ const RpgApp = () => {
       damage: "(Next Enemy damage)/2",
     };
 
-    setLog([...log, newLog]);
+    setLog((prev) => [...prev, newLog]);
 
     setActivePlayer((prev) => !prev);
 
@@ -165,15 +171,30 @@ const RpgApp = () => {
   // Enemy
   const opponentsHandler = () => {
     const functions = [
-      enemyAttackHandler,
-      enemySkillAttackHandler,
-      enemyHealHandler,
-      enemyDefendHandler,
+      {
+        fn: enemyAttackHandler,
+        condition: true,
+      },
+      {
+        fn: enemySkillAttackHandler,
+        condition: enemy.mana >= 30,
+      },
+      {
+        fn: enemyHealHandler,
+        condition: enemy.mana >= 20,
+      },
+      {
+        fn: enemyDefendHandler,
+        condition: true,
+      },
     ];
 
-    const randomIndex = Math.floor(Math.random() * functions.length);
+    const available = functions.filter((item) => item.condition);
 
-    functions[randomIndex]();
+    if (available.length === 0) return;
+
+    const random = available[Math.floor(Math.random() * available.length)];
+    random.fn();
   };
 
   const enemyAttackHandler = () => {
@@ -187,7 +208,7 @@ const RpgApp = () => {
 
     setPlayer((prev) => ({
       ...prev,
-      hp: player.hp - attackAmount,
+      hp: prev.hp - attackAmount,
     }));
 
     const newLog = {
@@ -196,7 +217,7 @@ const RpgApp = () => {
       damage: attackAmount,
     };
 
-    setLog([...log, newLog]);
+    setLog((prev) => [...prev, newLog]);
 
     setActivePlayer((prev) => !prev);
 
@@ -222,7 +243,7 @@ const RpgApp = () => {
     const manaAmount = 30;
     setMana(manaAmount);
 
-    setPlayer((prev) => ({
+    setEnemy((prev) => ({
       ...prev,
       mana: Math.max(prev.mana - manaAmount, 0),
     }));
@@ -233,7 +254,7 @@ const RpgApp = () => {
       damage: attackAmount,
     };
 
-    setLog([...log, newLog]);
+    setLog((prev) => [...prev, newLog]);
 
     setActivePlayer((prev) => !prev);
 
@@ -265,7 +286,7 @@ const RpgApp = () => {
       damage: healAmount,
     };
 
-    setLog([...log, newLog]);
+    setLog((prev) => [...prev, newLog]);
 
     setActivePlayer((prev) => !prev);
 
@@ -283,7 +304,7 @@ const RpgApp = () => {
       damage: "(Next Player damage)/2",
     };
 
-    setLog([...log, newLog]);
+    setLog((prev) => [...prev, newLog]);
 
     setActivePlayer((prev) => !prev);
 
@@ -336,7 +357,7 @@ const RpgApp = () => {
           />
           <CharacterCard
             className={
-              (activePlayer !== true) & (activePlayer !== null)
+              activePlayer !== true && activePlayer !== null
                 ? `${styles.active}`
                 : ""
             }
@@ -361,7 +382,7 @@ const RpgApp = () => {
                 </button>
               )}
               <button onClick={defendHandler}>Defend</button>
-              {player.mana >= 20 ? (
+              {player.mana >= 20 && player.hp < 100 ? (
                 <button onClick={healHandler}>Heal</button>
               ) : (
                 <button disabled onClick={healHandler}>
